@@ -2,53 +2,32 @@ import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  name: `Selene Yu`,
-  role: "Design Engineer",
+  firstName: "智轩",
+  lastName: "陈",
+  name: `陈智轩`,
+  role: "AI Agent开发 & AI应用开发者",
   avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
-  locale: "en", // BCP 47 language tag for the HTML lang attribute, e.g., 'en', 'ja', 'zh-TW'
+  email: "2831571386@qq.com",
+  location: "Asia/Shanghai",
+  languages: ["中文", "English"],
+  locale: "zh",
 };
 
 const newsletter: Newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: <>My weekly newsletter about creativity and engineering</>,
+  description: <>My weekly newsletter about AI and engineering</>,
 };
 
 const social: Social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
-  // Set essentials: true for links you want to show on the about page
   {
-    name: "GitHub",
+    name: "GitHub:xuanc1120-prog",
     icon: "github",
-    link: "https://github.com/once-ui-system",
+    link: "https://github.com/xuanc1120-prog",
     essential: true,
   },
   {
-    name: "LinkedIn",
-    icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-    essential: true,
-  },
-  {
-    name: "Instagram",
-    icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
-    essential: false,
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
-    essential: true,
-  },
-  {
-    name: "Email",
+    name: "Email：2831571386@qq.com",
     icon: "email",
     link: `mailto:${person.email}`,
     essential: true,
@@ -59,26 +38,27 @@ const home: Home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  title: `${person.name} - AI Developer Portfolio`,
+  description: `AI应用开发者 - ${person.name}的个人网站`,
+  headline: <>Hi there, I'm xuan</>,
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
+        <strong className="ml-4">AI Agent</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
           Featured work
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/work/enterprise-knowledge-base",
   },
   subline: (
     <>
-      I'm {person.firstName}, a {person.role.toLowerCase()} at{" "}
-      <Text as="span" size="xl" weight="strong">ONCE UI</Text>, where I craft intuitive <br /> user experiences. After hours, I build my own projects.
+      我是xuanc，专注于 <Text as="span" size="xl" weight="strong">AI 应用开发</Text> 与{" "}
+      <Text as="span" size="xl" weight="strong">AI Agent</Text> 方向，探索人工智能与工程实践的交叉领域。
+      <br />
     </>
   ),
 };
@@ -86,8 +66,8 @@ const home: Home = {
 const about: About = {
   path: "/about",
   label: "About",
-  title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  title: `关于我 – ${person.name}`,
+  description: `了解${person.name}，AI应用开发者`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -96,60 +76,41 @@ const about: About = {
     display: true,
   },
   calendar: {
-    display: true,
-    link: "https://cal.com",
+    display: false,
+    link: "",
   },
   intro: {
     display: true,
-    title: "Introduction",
+    title: "介绍/introduction",
     description: (
       <>
-        {person.firstName} is a {person.location.split("/")[1]?.replace("_", " ")}-based {person.role.toLowerCase()} with a passion for transforming complex challenges
-        into simple, elegant design solutions. Their work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        身份:本科生、AI应用开发者。
+        专业：机械电子工程。
+        对ai应用开发充满兴趣和热情,致力于将 AI 技术与工程实践相结合。
+        拥有多个 AI 项目经验，擅长从需求分析到系统实现的全流程开发。
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
-    title: "Work Experience",
+    display: true,
+    title: "项目经验/Project Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "企业知识库问答 Agent 平台",
+        timeframe: "2025",
+        role: "AI Application Developer",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            面向企业内部文档分散、LLM 回答缺乏证据与可追溯性的问题，主导设计并实现可本地部署的企业知识库问答 Agent 平台，覆盖文档上传、索引管理、知识库问答、报告生成和诊断追踪主链路。
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
-          </>,
-        ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
-        achievements: [
-          <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            基于 FastAPI + PostgreSQL 建模项目、用户、知识源、对话、报告与权限体系；使用 ChromaDB 构建向量索引，接入外部 embedding 与 rerank 接口，支持单项目内多知识库范围选择、检索调试和索引状态管理。
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            设计 evidence-first RAG 与受控 Agent Loop，将请求路由为普通对话、知识库问答、调用工具三类；知识库问答强制携带 citation，无有效证据时拒答，并在前端实时展示 planning、retrieving、calling_tool、summarizing 等运行状态。
+          </>,
+          <>
+            形成可演示的完整系统，包含引用溯源、报告生成、项目结论沉淀、检索日志、项目诊断、失败任务恢复、权限隔离和基础安全兜底；后端/worker 274 项测试、前端 123 项测试及生产构建验证通过。
           </>,
         ],
         images: [],
@@ -157,78 +118,59 @@ const about: About = {
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
-    title: "Studies",
+    display: true,
+    title: "教育经历/Education",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "广东科技学院",
+        description: <>机电工程学院 · 机电工程专业 · 2023级本科</>,
       },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
-    title: "Technical skills",
+    display: true,
+    title: "技术栈/Technical Skills",
     skills: [
       {
-        title: "Figma",
+        title: "AI & RAG",
         description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+          <>具备 RAG、Agent 架构、向量检索、Rerank 等 AI 应用开发经验。</>
         ),
         tags: [
-          {
-            name: "Figma",
-            icon: "figma",
-          },
+          { name: "RAG", icon: "document" },
+          { name: "AI Agent", icon: "rocket" },
+          { name: "ChromaDB", icon: "document" },
+          { name: "Rerank", icon: "document" },
+          { name: "OpenAI API", icon: "openai" },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        title: "Next.js",
+        title: "Backend",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>使用 Python 构建后端服务，熟悉数据库建模、异步任务处理和 API 设计。</>
         ),
         tags: [
-          {
-            name: "JavaScript",
-            icon: "javascript",
-          },
-          {
-            name: "Next.js",
-            icon: "nextjs",
-          },
-          {
-            name: "Supabase",
-            icon: "supabase",
-          },
+          { name: "Python", icon: "python" },
+          { name: "FastAPI", icon: "python" },
+          { name: "SQLAlchemy", icon: "python" },
+          { name: "PostgreSQL", icon: "postgresql" },
+          { name: "Docker", icon: "docker" },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
+        images: [],
+      },
+      {
+        title: "Frontend",
+        description: (
+          <>具备前端开发能力，能够独立完成全栈应用开发。</>
+        ),
+        tags: [
+          { name: "React", icon: "react" },
+          { name: "TypeScript", icon: "typescript" },
+          { name: "Vite", icon: "vite" },
+          { name: "Tailwind CSS", icon: "tailwindcss" },
         ],
+        images: [],
       },
     ],
   },
@@ -237,28 +179,22 @@ const about: About = {
 const blog: Blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
+  title: "技术博客",
+  description: `${person.name}的技术学习笔记与实践心得`,
 };
 
 const work: Work = {
   path: "/work",
   label: "Work",
-  title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  title: `项目作品 – ${person.name}`,
+  description: `AI应用开发与机电工程项目展示`,
 };
 
 const gallery: Gallery = {
   path: "/gallery",
   label: "Gallery",
-  title: `Photo gallery – ${person.name}`,
-  description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
+  title: `照片集 – ${person.name}`,
+  description: `${person.name}的照片集`,
   images: [
     {
       src: "/images/gallery/horizontal-1.jpg",
@@ -280,27 +216,52 @@ const gallery: Gallery = {
       alt: "image",
       orientation: "vertical",
     },
+  ],
+};
+
+const hobbies = {
+  path: "/hobbies",
+  label: "Hobbies",
+  title: `兴趣爱好 – ${person.name}`,
+  description: `了解${person.name}的兴趣爱好与个人生活`,
+  items: [
     {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
+      name: "摄影",
+      description: "喜欢用镜头记录生活中的美好瞬间，尤其是风景和城市街拍。",
+      color: "#FF6B6B",
+      emoji: "📷",
     },
     {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
-      orientation: "horizontal",
+      name: "阅读",
+      description: "热爱阅读科技类书籍和AI论文，保持对前沿技术的敏感度。",
+      color: "#4ECDC4",
+      emoji: "📚",
     },
     {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
+      name: "编程",
+      description: "享受用代码解决问题的过程，业余时间喜欢探索新技术和做个人项目。",
+      color: "#45B7D1",
+      emoji: "💻",
     },
     {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
-      orientation: "vertical",
+      name: "运动",
+      description: "保持规律的运动习惯，喜欢跑步和篮球，劳逸结合。",
+      color: "#96CEB4",
+      emoji: "🏀",
+    },
+    {
+      name: "音乐",
+      description: "听音乐是放松的最佳方式，偏好轻音乐和电子音乐。",
+      color: "#DDA0DD",
+      emoji: "🎵",
+    },
+    {
+      name: "旅行",
+      description: "喜欢探索不同的城市和文化，每次旅行都是一次新的学习体验。",
+      color: "#F7DC6F",
+      emoji: "✈️",
     },
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, social, newsletter, home, about, blog, work, gallery, hobbies };

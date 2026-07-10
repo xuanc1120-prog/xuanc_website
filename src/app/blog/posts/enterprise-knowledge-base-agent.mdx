@@ -1,0 +1,68 @@
+---
+title: "企业知识库智能问答 Agent 系统开发实践"
+summary: "从零构建面向企业场景的 AI Agent 系统，覆盖文档接入、RAG 检索、受控 Agent Loop、报告生成与诊断追踪。"
+image: "/images/projects/project-01/cover-01.jpg"
+publishedAt: "2025-06-20"
+tag: "AI Agent"
+---
+
+## 项目定位
+
+这是一个面向企业知识库场景的 AI Agent 系统，目标是在 2 核 2GB 的轻量服务器上实现可落地、可演示、可解释的知识库问答能力。
+
+核心问题：企业内部文档分散，LLM 回答缺乏证据与可追溯性。
+
+## 系统架构
+
+```text
+Browser / React → FastAPI API → PostgreSQL (元数据)
+                              → Chroma (向量索引)
+                              → Worker (异步处理)
+                              → 外部 LLM / Embedding / Rerank
+```
+
+前端 React + Vite，后端 FastAPI + SQLAlchemy，Worker 负责文档解析、切块、索引和报告生成的异步任务。
+
+## 核心设计
+
+### 证据优先的 RAG
+
+知识库问答强制先检索项目内文档。证据不足时系统返回明确提示，拒绝编造回答。每条回答携带 citation，绑定具体文档、chunk、content version 和检索分数。
+
+### 受控 Agent Loop
+
+系统采用单 Agent 架构，围绕企业知识库问答设计。每轮最多 5 次工具调用，开放的工具包括检索知识库、查看索引概览、调试检索、生成报告、测试 LLM 连通性等。删除知识源、成员管理等高副作用操作不会暴露给 Agent。
+
+前端实时展示 Agent 的运行状态：planning → retrieving → calling_tool → summarizing。
+
+### 检索质量可诊断
+
+支持向量检索、SQL 关键词检索、RRF 融合、外部 rerank、top-k/score 阈值调试。索引管理和项目诊断页面可查看完整的检索日志和用户反馈。
+
+## 技术栈
+
+| 层级 | 技术 |
+|------|------|
+| 后端 API | FastAPI, SQLAlchemy, Alembic, Pydantic |
+| 前端 | React, Vite, TypeScript, Tailwind CSS |
+| 数据库 | PostgreSQL |
+| 向量库 | Chroma PersistentClient |
+| AI 接入 | OpenAI-compatible LLM, 外部 Embedding, 外部 Rerank |
+| 测试 | Pytest, Vitest, React Testing Library |
+
+## 功能模块
+
+- **认证与权限**: 邀请码注册、项目成员管理、owner/editor/viewer 权限控制
+- **知识源管理**: 支持 txt/md/pdf/docx 上传，挂载受限目录，删除时清理向量
+- **文档处理**: Worker 异步解析、结构化切块、卡死任务恢复
+- **对话系统**: 普通对话、知识库问答、调用工具三种模式
+- **报告生成**: 基于会话证据生成报告，支持研究总结、会议简报等模板
+- **诊断面板**: 文档统计、检索日志、Agent run、项目结论
+
+## 2C2G 部署取舍
+
+明确不引入本地 embedding/reranker 模型、Redis/Celery、Prometheus/Grafana、Elasticsearch 等重型依赖。LLM、Embedding、Rerank 全部外接 API，保持服务器轻量。
+
+## 项目成果
+
+后端/worker 274 项测试、前端 123 项测试及生产构建验证通过。系统包含引用溯源、报告生成、项目结论沉淀、检索日志、项目诊断、失败任务恢复、权限隔离和基础安全兜底。

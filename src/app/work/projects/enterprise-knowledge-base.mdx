@@ -1,0 +1,30 @@
+---
+title: "企业知识库问答 Agent 平台"
+publishedAt: "2025-06-15"
+summary: "基于 RAG 与 Agent 架构的企业级知识库问答平台，覆盖文档上传、索引管理、知识库问答、报告生成和诊断追踪主链路。"
+images:
+  - "/images/projects/project-01/cover-01.jpg"
+  - "/images/projects/project-01/cover-02.jpg"
+team:
+  - name: "陈智轩"
+    role: "AI Application Developer"
+    avatar: "/images/avatar.jpg"
+---
+
+## 技术栈
+
+Python / FastAPI / React / TypeScript / PostgreSQL / ChromaDB / RAG / Rerank / Docker
+
+## 项目背景
+
+面向企业内部文档分散、LLM 回答缺乏证据与可追溯性的问题，主导设计并实现可本地部署的企业知识库问答 Agent 平台，覆盖文档上传、索引管理、知识库问答、报告生成和诊断追踪主链路。
+
+## 核心工作
+
+- **后端架构**: 基于 FastAPI + PostgreSQL 建模项目、用户、知识源、对话、报告与权限体系；使用 ChromaDB 构建向量索引，接入外部 embedding 与 rerank 接口，支持单项目内多知识库范围选择、检索调试和索引状态管理。
+- **RAG 与 Agent 设计**: 设计 evidence-first RAG 与受控 Agent Loop，将请求路由为普通对话、知识库问答、调用工具三类；知识库问答强制携带 citation，无有效证据时拒答，并在前端实时展示 planning、retrieving、calling_tool、summarizing 等运行状态。
+- **系统完整性**: 形成可演示的完整系统，包含引用溯源、报告生成、项目结论沉淀、检索日志、项目诊断、失败任务恢复、权限隔离和基础安全兜底。
+
+## 项目成果
+
+后端/worker 274 项测试、前端 123 项测试及生产构建验证通过。
