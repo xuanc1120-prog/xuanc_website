@@ -7,16 +7,12 @@ interface TypewriterTextProps {
   text: string;
   delay?: number;
   speed?: number;
-  variant?: string;
-  onBackground?: string;
 }
 
 export default function TypewriterText({
   text,
   delay = 0,
   speed = 60,
-  variant = "heading-default-xl",
-  onBackground = "neutral-weak",
 }: TypewriterTextProps) {
   const [displayed, setDisplayed] = useState("");
   const [showCursor, setShowCursor] = useState(true);
@@ -47,8 +43,8 @@ export default function TypewriterText({
   return (
     <Text
       wrap="balance"
-      onBackground={onBackground}
-      variant={variant as any}
+      onBackground="neutral-weak"
+      variant="heading-default-xl"
       style={{ minHeight: "2em" }}
     >
       {displayed}
