@@ -36,7 +36,7 @@ const social: Social = [
 
 const home: Home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image: "/images/avatar.jpg",
   label: "Home",
   title: `${person.name} - AI Developer Portfolio`,
   description: `AI应用开发者 - ${person.name}的个人网站`,
