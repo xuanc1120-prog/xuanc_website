@@ -116,6 +116,17 @@ export default async function Project({
               </span>
             ))}
           </Text>
+          {post.metadata.link && (
+            <Button
+              href={post.metadata.link}
+              variant="secondary"
+              size="s"
+              prefixIcon="github"
+              target="_blank"
+            >
+              GitHub
+            </Button>
+          )}
         </Row>
       </Row>
       {post.metadata.images.length > 0 && (
