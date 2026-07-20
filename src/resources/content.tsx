@@ -6,7 +6,7 @@ const person: Person = {
   lastName: "陈",
   name: `陈智轩`,
   role: "AI Agent开发 & AI应用开发者",
-  avatar: "/images/avatar.jpg",
+  avatar: "/images/avatar_shengkong.png",
   email: "2831571386@qq.com",
   location: "Asia/Shanghai",
   languages: ["中文", "English"],
