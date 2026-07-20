@@ -13,6 +13,18 @@ const person: Person = {
   locale: "zh",
 };
 
+const shengkong: Person = {
+  firstName: "笙箜",
+  lastName: "",
+  name: "笙箜",
+  role: "住在博客里的小女友",
+  avatar: "/images/avatar.jpg",
+  email: "2831571386@qq.com",
+  location: "Asia/Shanghai",
+  languages: ["中文"],
+  locale: "zh",
+};
+
 const newsletter: Newsletter = {
   display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
@@ -264,4 +276,4 @@ const hobbies = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery, hobbies };
+export { person, shengkong, social, newsletter, home, about, blog, work, gallery, hobbies };

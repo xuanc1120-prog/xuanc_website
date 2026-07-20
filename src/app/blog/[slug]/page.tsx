@@ -14,7 +14,7 @@ import {
   Media,
   Line,
 } from "@once-ui-system/core";
-import { baseURL, about, blog, person } from "@/resources";
+import { baseURL, about, blog, person, shengkong } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
 import { getPosts } from "@/utils/utils";
 import { Metadata } from "next";
@@ -65,6 +65,8 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
     notFound();
   }
 
+  const author = post.metadata.author === "shengkong" ? shengkong : person;
+
   const avatars =
     post.metadata.team?.map((person) => ({
       src: person.avatar,
@@ -88,9 +90,9 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
               `/api/og/generate?title=${encodeURIComponent(post.metadata.title)}`
             }
             author={{
-              name: person.name,
+              name: author.name,
               url: `${baseURL}${about.path}`,
-              image: `${baseURL}${person.avatar}`,
+              image: `${baseURL}${author.avatar}`,
             }}
           />
           <Column maxWidth="s" gap="16" horizontal="center" align="center">
@@ -114,9 +116,9 @@ export default async function Blog({ params }: { params: Promise<{ slug: string 
           </Column>
           <Row marginBottom="32" horizontal="center">
             <Row gap="16" vertical="center">
-              <Avatar size="s" src={person.avatar} />
+              <Avatar size="s" src={author.avatar} />
               <Text variant="label-default-m" onBackground="brand-weak">
-                {person.name}
+                {author.name}
               </Text>
             </Row>
           </Row>
